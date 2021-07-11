@@ -71,6 +71,15 @@ const internQuestions = [
     }
 ];
 
+const addEmployeeQuestion = [
+    {
+        type: 'list',
+        message: "Which type of team member would you like to add?",
+        name: 'type',
+        choices: ['Engineer', 'Intern', "I don't want to add more team members"],
+    }
+];
+
 // takes the HTML data and creates a new index.html file
 // TODO: probably need to make a css file too
 const writeHTMLFile = (data) => {
