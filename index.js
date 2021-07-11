@@ -71,11 +71,11 @@ const internQuestions = [
     }
 ];
 
-const addEmployeeQuestion = [
+const nextActionQuestion = [
     {
         type: 'list',
         message: "Which type of team member would you like to add?",
-        name: 'type',
+        name: 'next',
         choices: ['Engineer', 'Intern', "I don't want to add more team members"],
     }
 ];
@@ -87,47 +87,40 @@ const writeHTMLFile = (data) => {
         err ? console.log(err) : console.log(`HTML File created successfully!`))
 };
 
-// 
+// prompts the user add an Engineer or Intern or Stop adding
+const askNextAction = () => inquirer
+    .prompt(nextActionQuestion)
+    .then((nextActionAnswers) => {
+
+        //  use answer to decide what do next.
+    })
+
+
+// function initializes app
 const init = () => {
     inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: 'What is your name?',
-                name: 'name',
-            }
-        ])
-        .then((response) =>
-            generateHTML(response)
+        .prompt(managerQuestions])
+        .then((managerAnswers) => {
+            // create new manager object with  `managerAnswers`
+
+
+            return askNextAction();
+}
         )
         .then((response) =>
-            writeHTMLFile(response)
-        );
+    writeHTMLFile(response)
+);
 }
 
 init();
 
-// prompts
-//  Please Build Your Team
-    //  What is the team manager's name?
-    //  what is the team manager's id?
-    //  what is the team managers email?
-    //  what is the team managers office number?
-    //  (all of this was stored in a manager object/class)
+// prompts the user for the manager information using our `managerquestions`
 
-// Which type of team member would you like to add?
-    // engineer
-        // what is the engineer's name?
-        // what is your engineer's id?
-        // what is your engineer's email? (email validation)
-        // what is your engineer's github username?
-        // (re-prompt what type of team member?)
-    // intern
-        // what is the intern's name?
-        // what is your intern's id?
-        // what is your intern's email? (email validation)
-        // what is your intern's school?
-        // (re-prompt what type of team member?)
+    // THEN we need to create a new manager object with that response data
+
+    // THEN ask the user what they want to do next (prompt with nextActionQuestion)
+
+        // THEN use their answer to decide what to do next.
 
 
 
