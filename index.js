@@ -38,7 +38,7 @@ const engineerQuestions = [
     },
     {
         type: 'input',
-        message: "What is the engineer's?",
+        message: "What is the engineer's email?",
         name: 'email',
     },
     {
@@ -61,7 +61,7 @@ const internQuestions = [
     },
     {
         type: 'input',
-        message: "What is the intern's?",
+        message: "What is the intern's email?",
         name: 'email',
     },
     {
@@ -75,10 +75,42 @@ const nextActionQuestion = [
     {
         type: 'list',
         message: "Which type of team member would you like to add?",
-        name: 'next',
+        name: 'choice',
         choices: ['Engineer', 'Intern', "I don't want to add more team members"],
     }
 ];
+
+
+// prompts the user to add an Engineer or Intern or Stop adding
+const askNextAction = () => inquirer
+    .prompt(nextActionQuestion)
+    .then((nextActionAnswers) => {
+        if (nextActionAnswers.choice === 'Engineer') {
+            return askEngineerQuestions()
+        } else if (nextActionAnswers.choice === 'Intern') {
+            return askInternQuestions()
+        } else {
+            return `You chose stop`
+        }
+    });
+
+// if engineer selected run these prompts
+const askEngineerQuestions = () => inquirer
+    .prompt(engineerQuestions)
+    .then((engineerAnswers) => {
+        console.log(`Engineer object create parn\n` + engineerAnswers);
+        // build new engineer object with `engineerAnswers`
+        return askNextAction();
+    });
+
+//  if intern selected run these prompts
+const askInternQuestions = () => inquirer
+    .prompt(internQuestions)
+    .then((internAnswers) => {
+        console.log(`Intern object create part\n` + internAnswers);
+        // build new intern object with `internAnswers`
+        return askNextAction();
+    });
 
 // takes the HTML data and creates a new index.html file
 // TODO: probably need to make a css file too
@@ -87,40 +119,25 @@ const writeHTMLFile = (data) => {
         err ? console.log(err) : console.log(`HTML File created successfully!`))
 };
 
-// prompts the user add an Engineer or Intern or Stop adding
-const askNextAction = () => inquirer
-    .prompt(nextActionQuestion)
-    .then((nextActionAnswers) => {
-
-        //  use answer to decide what do next.
-    })
-
-
 // function initializes app
 const init = () => {
     inquirer
-        .prompt(managerQuestions])
+        .prompt(managerQuestions)
         .then((managerAnswers) => {
+
             // create new manager object with  `managerAnswers`
 
-
+            console.log(`manager item create part\n ${managerAnswers}`);
             return askNextAction();
-}
-        )
+        })
         .then((response) =>
-    writeHTMLFile(response)
-);
+            console.log(`Made it all the way to writeHTMLFile!\n ${response}`)
+            // writeHTMLFile(response)
+        );
 }
 
 init();
 
-// prompts the user for the manager information using our `managerquestions`
-
-    // THEN we need to create a new manager object with that response data
-
-    // THEN ask the user what they want to do next (prompt with nextActionQuestion)
-
-        // THEN use their answer to decide what to do next.
 
 
 
