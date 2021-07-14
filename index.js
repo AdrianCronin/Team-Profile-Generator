@@ -131,10 +131,12 @@ const init = () => {
         .then((managerAnswers) => {
 
             // create new manager object with  `managerAnswers`
-            // const manager = new Manager(
-            // const manager = new Manager(managerAnswers)
+            const manager = new Manager(managerAnswers);
+            employees.push(manager); // add manager to employee array
 
-            console.log(`manager item create part\n ${JSON.stringify(managerAnswers)}`);
+            console.log(`manager item create part\n ${JSON.stringify(manager)}`);
+            console.log(`current object array is\n${JSON.stringify(employees)}`);
+
             return askNextAction();
         })
         .then((response) =>
