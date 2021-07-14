@@ -2,6 +2,8 @@ const inquirer = require('inquirer'); // inquirer module
 const fs = require('fs'); // file system module
 const generateHTML = require('./src/generateHTML'); // import generated HTML string
 const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 
 const managerQuestions = [
     {
@@ -101,9 +103,14 @@ const askNextAction = () => inquirer
 const askEngineerQuestions = () => inquirer
     .prompt(engineerQuestions)
     .then((engineerAnswers) => {
-        console.log(`Engineer object create parn\n` + engineerAnswers);
+
         // build new engineer object with `engineerAnswers`
-        // push engineer object into employees[]
+        const engineer = new Engineer(engineerAnswers);
+        employees.push(engineer); // push engineer object into employees[]
+
+        console.log(`engineer item create part\n ${JSON.stringify(engineer)}`); // testing - delete
+        console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+
         return askNextAction();
     });
 
@@ -111,9 +118,13 @@ const askEngineerQuestions = () => inquirer
 const askInternQuestions = () => inquirer
     .prompt(internQuestions)
     .then((internAnswers) => {
-        console.log(`Intern object create part\n` + internAnswers);
         // build new intern object with `internAnswers`
-        // push intern object to employees[]
+        const intern = new Intern(internAnswers);
+        employees.push(intern); // push intern object to employees[]
+
+        console.log(`engineer item create part\n ${JSON.stringify(intern)}`); // testing - delete
+        console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+
         return askNextAction();
     });
 
@@ -134,8 +145,8 @@ const init = () => {
             const manager = new Manager(managerAnswers);
             employees.push(manager); // add manager to employee array
 
-            console.log(`manager item create part\n ${JSON.stringify(manager)}`);
-            console.log(`current object array is\n${JSON.stringify(employees)}`);
+            console.log(`manager item create part\n ${JSON.stringify(manager)}`); // testing - delete
+            console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
 
             return askNextAction();
         })
