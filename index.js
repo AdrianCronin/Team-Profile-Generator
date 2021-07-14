@@ -80,6 +80,8 @@ const nextActionQuestion = [
     }
 ];
 
+// save new employee objects into this array
+const employees = [];
 
 // prompts the user to add an Engineer or Intern or Stop adding
 const askNextAction = () => inquirer
@@ -109,6 +111,7 @@ const askInternQuestions = () => inquirer
     .then((internAnswers) => {
         console.log(`Intern object create part\n` + internAnswers);
         // build new intern object with `internAnswers`
+        // push intern object to employee array
         return askNextAction();
     });
 
@@ -126,6 +129,7 @@ const init = () => {
         .then((managerAnswers) => {
 
             // create new manager object with  `managerAnswers`
+            // const manager = new Manager(managerAnswers)
 
             console.log(`manager item create part\n ${managerAnswers}`);
             return askNextAction();
