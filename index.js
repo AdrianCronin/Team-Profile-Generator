@@ -132,7 +132,7 @@ const init = () => {
             // create new manager object with  `managerAnswers`
             // const manager = new Manager(managerAnswers)
 
-            console.log(`manager item create part\n ${managerAnswers}`);
+            console.log(`manager item create part\n ${JSON.stringify(managerAnswers)}`);
             return askNextAction();
         })
         .then((response) =>
