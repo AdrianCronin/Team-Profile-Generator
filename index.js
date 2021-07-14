@@ -102,6 +102,7 @@ const askEngineerQuestions = () => inquirer
     .then((engineerAnswers) => {
         console.log(`Engineer object create parn\n` + engineerAnswers);
         // build new engineer object with `engineerAnswers`
+        // push engineer object into employees[]
         return askNextAction();
     });
 
@@ -111,7 +112,7 @@ const askInternQuestions = () => inquirer
     .then((internAnswers) => {
         console.log(`Intern object create part\n` + internAnswers);
         // build new intern object with `internAnswers`
-        // push intern object to employee array
+        // push intern object to employees[]
         return askNextAction();
     });
 
