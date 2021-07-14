@@ -1,6 +1,7 @@
 const inquirer = require('inquirer'); // inquirer module
 const fs = require('fs'); // file system module
 const generateHTML = require('./src/generateHTML'); // import generated HTML string
+const Manager = require('./lib/manager');
 
 const managerQuestions = [
     {
@@ -130,6 +131,7 @@ const init = () => {
         .then((managerAnswers) => {
 
             // create new manager object with  `managerAnswers`
+            // const manager = new Manager(
             // const manager = new Manager(managerAnswers)
 
             console.log(`manager item create part\n ${JSON.stringify(managerAnswers)}`);
