@@ -24,7 +24,7 @@ const managerQuestions = [
     {
         type: 'input',
         message: 'What is the team managers office number?',
-        name: 'office',
+        name: 'officeNumber',
     }
 ];
 
@@ -148,10 +148,11 @@ const init = () => {
             // console.log(`manager item create part\n ${JSON.stringify(manager)}`); // testing - delete
             // console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
 
-            console.log(`getName() ==> ${manager.getName()}`)
-            console.log(`getId() ==> ${manager.getId()}`)
-            console.log(`getEmail() ==> ${manager.getEmail()}`)
-            console.log(`getRole() ==> ${manager.getRole()}`)
+            console.log(`getName() ==> ${manager.getName()}`);
+            console.log(`getId() ==> ${manager.getId()}`);
+            console.log(`getEmail() ==> ${manager.getEmail()}`);
+            console.log(`getRole() ==> ${manager.getRole()}`);
+            console.log(`getOfficeNumber() ==> ${manager.getOfficeNumber()}`);
 
             return askNextAction();
         })
