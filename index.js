@@ -145,8 +145,13 @@ const init = () => {
             const manager = new Manager(managerAnswers);
             employees.push(manager); // add manager to employee array
 
-            console.log(`manager item create part\n ${JSON.stringify(manager)}`); // testing - delete
-            console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+            // console.log(`manager item create part\n ${JSON.stringify(manager)}`); // testing - delete
+            // console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+
+            console.log(`getName() ==> ${manager.getName()}`)
+            console.log(`getId() ==> ${manager.getId()}`)
+            console.log(`getEmail() ==> ${manager.getEmail()}`)
+            console.log(`getRole() ==> ${manager.getRole()}`)
 
             return askNextAction();
         })
