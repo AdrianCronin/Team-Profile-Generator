@@ -108,8 +108,14 @@ const askEngineerQuestions = () => inquirer
         const engineer = new Engineer(engineerAnswers);
         employees.push(engineer); // push engineer object into employees[]
 
-        console.log(`engineer item create part\n ${JSON.stringify(engineer)}`); // testing - delete
-        console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+        // console.log(`engineer item create part\n ${JSON.stringify(engineer)}`); // testing - delete
+        // console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+
+        console.log(`getName() ==> ${engineer.getName()}`);  // testing - delete
+        console.log(`getId() ==> ${engineer.getId()}`);  // testing - delete
+        console.log(`getEmail() ==> ${engineer.getEmail()}`);  // testing - delete
+        console.log(`getRole() ==> ${engineer.getRole()}`);  // testing - delete
+        console.log(`getGitHub() ==> ${engineer.getGitHub()}`);  // testing - delete
 
         return askNextAction();
     });
@@ -148,11 +154,11 @@ const init = () => {
             // console.log(`manager item create part\n ${JSON.stringify(manager)}`); // testing - delete
             // console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
 
-            console.log(`getName() ==> ${manager.getName()}`);
-            console.log(`getId() ==> ${manager.getId()}`);
-            console.log(`getEmail() ==> ${manager.getEmail()}`);
-            console.log(`getRole() ==> ${manager.getRole()}`);
-            console.log(`getOfficeNumber() ==> ${manager.getOfficeNumber()}`);
+            console.log(`getName() ==> ${manager.getName()}`);  // testing - delete
+            console.log(`getId() ==> ${manager.getId()}`);  // testing - delete
+            console.log(`getEmail() ==> ${manager.getEmail()}`);  // testing - delete
+            console.log(`getRole() ==> ${manager.getRole()}`);  // testing - delete
+            console.log(`getOfficeNumber() ==> ${manager.getOfficeNumber()}`);  // testing - delete
 
             return askNextAction();
         })
@@ -160,7 +166,7 @@ const init = () => {
             console.log(`Made it all the way to writeHTMLFile!\n ${response}`)
             // writeHTMLFile(response)
         );
-        // make a catch callback function
+    // make a catch callback function
 }
 
 init();
