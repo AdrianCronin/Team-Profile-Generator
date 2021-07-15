@@ -154,11 +154,12 @@ const init = () => {
             console.log(`Made it all the way to writeHTMLFile!\n ${response}`)
             // writeHTMLFile(response)
         );
+        // make a catch callback function
 }
 
 init();
 
-
+// possible use template html files with stringReplace()
 
 
 
