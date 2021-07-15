@@ -141,10 +141,11 @@ const init = () => {
 
             return askNextAction();
         })
-        .then(() => {
-            // console.log(`Made it all the way to writeHTMLFile!\n ${JSON.stringify(employees)}`); // testing - delete
-            generateHTML(JSON.stringify(employees)); // pass employee object into generateHTML method
-            // writeHTMLFile(JSON.stringify(employees)) // call this after generating HTML
+        .then(() => 
+            generateHTML(employees) // pass employee object into generateHTML method
+        )
+        .then((data) =>{
+            writeHTMLFile(data) // accept generated html
         });
     // make a catch callback function
 }

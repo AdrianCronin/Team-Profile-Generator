@@ -1,18 +1,179 @@
+const managerTemplate =
+    `
+    <!-- new manager card -->
+        <div class="column is-3">
+            <div class="card">
+                <header class="card-header has-background-link">
+                    <p class="card-header-title">
+                        [NAMEREPLACE]
+                    </p>
+                </header>
+                <header class="card-header has-background-link">
+                    <p class="card-header-title">
+                        [ROLEREPLACE]
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <nav class="panel">
+                            <a class="panel-block">
+                                ID: [IDREPLACE]
+                            </a>
+                            <a class="panel-block">
+                                Email: [EMAILREPLACE]
+                            </a>
+                            <a class="panel-block">
+                                Office Number: [OFFICENUMBERREPLACE]
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- end manager card -->
+    `;
+
+const engineerTemplate =
+    `
+    <!-- new engineer card -->
+    <div class="column is-3">
+        <div class="card">
+            <header class="card-header has-background-link">
+                <p class="card-header-title">
+                    [NAMEREPLACE]
+                </p>
+            </header>
+            <header class="card-header has-background-link">
+                <p class="card-header-title">
+                    [ROLEREPLACE]
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <nav class="panel">
+                        <a class="panel-block">
+                            ID: [IDREPLACE]
+                        </a>
+                        <a class="panel-block">
+                            Email: [EMAILREPLACE]
+                        </a>
+                        <a class="panel-block">
+                            GitHub: [GITHUBREPLACE]
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end engineer card -->
+    `;
+
+const internTemplate =
+    `
+    <!-- new intern card -->
+    <div class="column is-3">
+        <div class="card">
+            <header class="card-header has-background-link">
+                <p class="card-header-title">
+                    [NAMEREPLACE]
+                </p>
+            </header>
+            <header class="card-header has-background-link">
+                <p class="card-header-title">
+                    [ROLEREPLACE]
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <nav class="panel">
+                        <a class="panel-block">
+                            ID: [IDREPLACE]
+                        </a>
+                        <a class="panel-block">
+                            Email: [EMAILREPLACE]
+                        </a>
+                        <a class="panel-block">
+                            School: [SCHOOLREPLACE]
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end intern card -->
+    `;
+
+// for each 
+    // check each element role
+        // if Manager
+            // replace manager template with variables
+            // save new template string to array
+        // if Engineer
+            // replace manager template with variables
+            // save new template string to array
+        // if Intern
+            // replace manager template with variables
+            // save new template string to array
+// loop over template array and add each element to the html file
+
+const createElements = (employee) => {
+
+    console.log(JSON.stringify(employee)); // testing - delete
+
+    const nameReplace = /\[NAMEREPLACE\]/;
+    const idReplace = /\[IDREPLACE\]/;
+    const emailReplace = /\[EMAILREPLACE\]/;
+    const roleReplace = /\[ROLEREPLACE\]/;
+    const officeNumberReplace = /\[OFFICENUMBERREPLACE\]/;
+    const githubReplace = /\[GITHUBREPLACE\]/;
+    const schoolReplace = /\[SCHOOLREPLACE\]/;
+
+    let output = ``;
+
+    switch(employee.role) {
+        case 'Manager':
+            output = managerTemplate;
+            output = output.replace(nameReplace, employee.name)
+            output = output.replace(roleReplace, employee.role)
+            output = output.replace(idReplace, employee.id)
+            output = output.replace(emailReplace, employee.email)
+            output = output.replace(officeNumberReplace, employee.officeNumber)
+
+            return output;
+
+        case 'Engineer':
+            output = engineerTemplate;
+            output = output.replace(nameReplace, employee.name)
+            output = output.replace(roleReplace, employee.role)
+            output = output.replace(idReplace, employee.id)
+            output = output.replace(emailReplace, employee.email)
+            output = output.replace(githubReplace, employee.github)
+
+            return output;
+
+        case 'Intern':
+            output = internTemplate;
+            output = output.replace(nameReplace, employee.name)
+            output = output.replace(roleReplace, employee.role)
+            output = output.replace(idReplace, employee.id)
+            output = output.replace(emailReplace, employee.email)
+            output = output.replace(schoolReplace, employee.school)
+
+            return output;
+    }
+}
 
 // return a string of HTML
-const generateHTML = (data) => {
-    console.log(`This is from genereate HTML ${data}`);
-    console.log(`This is back into object form ${JSON.parse(data)}`)
-    const employees = JSON.parse(data);
+const generateHTML = (employees) => {
 
-    console.log(employees[0]);
+    let elementArray = [];
 
-    console.log(`name => ${employees[0].name}`);
-    console.log(`id => ${employees[0].id}`);
-    console.log(`email => ${employees[0].email}`);
-    console.log(`role => ${employees[0].role}`);
-    console.log(`officeNumber => ${employees[0].officeNumber}`);
-
+    for (let i = 0; i < employees.length; i++) {
+        elementArray.push(createElements(employees[i]));
+    }
+    
+    console.log(elementArray);
+    // console.log(`This is from genereate HTML ${JSON.stringify(employees)}`); // testing delete
 
     return `
     <!DOCTYPE html>
@@ -42,101 +203,7 @@ const generateHTML = (data) => {
         </section>
 
         <div class="columns is-multiline">
-            <!-- new manager card -->
-            <div class="column is-3">
-                <div class="card">
-                    <header class="card-header has-background-link">
-                        <p class="card-header-title">
-                            Name
-                        </p>
-                    </header>
-                    <header class="card-header has-background-link">
-                        <p class="card-header-title">
-                            Role
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <nav class="panel">
-                                <a class="panel-block">
-                                    ID:
-                                </a>
-                                <a class="panel-block">
-                                    Email:
-                                </a>
-                                <a class="panel-block">
-                                    Office Number:
-                                </a>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end manager card -->
-
-            <!-- new engineer card -->
-            <div class="column is-3">
-                <div class="card">
-                    <header class="card-header has-background-link">
-                        <p class="card-header-title">
-                            Name
-                        </p>
-                    </header>
-                    <header class="card-header has-background-link">
-                        <p class="card-header-title">
-                            Role
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <nav class="panel">
-                                <a class="panel-block">
-                                    ID:
-                                </a>
-                                <a class="panel-block">
-                                    Email:
-                                </a>
-                                <a class="panel-block">
-                                    GitHub:
-                                </a>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end engineer card -->
-
-            <!-- new intern card -->
-            <div class="column is-3">
-                <div class="card">
-                    <header class="card-header has-background-link">
-                        <p class="card-header-title">
-                            Name
-                        </p>
-                    </header>
-                    <header class="card-header has-background-link">
-                        <p class="card-header-title">
-                            Role
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <nav class="panel">
-                                <a class="panel-block">
-                                    ID:
-                                </a>
-                                <a class="panel-block">
-                                    Email:
-                                </a>
-                                <a class="panel-block">
-                                    School:
-                                </a>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end intern card -->
+            [OUTPUTREPLACE]
         </div>
 
         <!-- jQuery -->
