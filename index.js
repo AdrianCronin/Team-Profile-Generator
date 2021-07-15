@@ -95,7 +95,7 @@ const askNextAction = () => inquirer
         } else if (nextActionAnswers.choice === 'Intern') {
             return askInternQuestions()
         } else {
-            return `You chose stop`
+            return
         }
     });
 
@@ -108,15 +108,6 @@ const askEngineerQuestions = () => inquirer
         const engineer = new Engineer(engineerAnswers);
         employees.push(engineer); // push engineer object into employees[]
 
-        // console.log(`engineer item create part\n ${JSON.stringify(engineer)}`); // testing - delete
-        // console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
-
-        console.log(`getName() ==> ${engineer.getName()}`);  // testing - delete
-        console.log(`getId() ==> ${engineer.getId()}`);  // testing - delete
-        console.log(`getEmail() ==> ${engineer.getEmail()}`);  // testing - delete
-        console.log(`getRole() ==> ${engineer.getRole()}`);  // testing - delete
-        console.log(`getGitHub() ==> ${engineer.getGitHub()}`);  // testing - delete
-
         return askNextAction();
     });
 
@@ -126,10 +117,7 @@ const askInternQuestions = () => inquirer
     .then((internAnswers) => {
         // build new intern object with `internAnswers`
         const intern = new Intern(internAnswers);
-        employees.push(intern); // push intern object to employees[]
-
-        console.log(`engineer item create part\n ${JSON.stringify(intern)}`); // testing - delete
-        console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
+        employees.push(intern); // push intern object to employees[]         
 
         return askNextAction();
     });
@@ -151,19 +139,10 @@ const init = () => {
             const manager = new Manager(managerAnswers);
             employees.push(manager); // add manager to employee array
 
-            // console.log(`manager item create part\n ${JSON.stringify(manager)}`); // testing - delete
-            // console.log(`current object array is\n${JSON.stringify(employees)}`); // testing - delete
-
-            console.log(`getName() ==> ${manager.getName()}`);  // testing - delete
-            console.log(`getId() ==> ${manager.getId()}`);  // testing - delete
-            console.log(`getEmail() ==> ${manager.getEmail()}`);  // testing - delete
-            console.log(`getRole() ==> ${manager.getRole()}`);  // testing - delete
-            console.log(`getOfficeNumber() ==> ${manager.getOfficeNumber()}`);  // testing - delete
-
             return askNextAction();
         })
-        .then((response) =>
-            console.log(`Made it all the way to writeHTMLFile!\n ${response}`)
+        .then(() =>
+            console.log(`Made it all the way to writeHTMLFile!\n ${JSON.stringify(employees)}`) // testing - delete
             // writeHTMLFile(response)
         );
     // make a catch callback function
