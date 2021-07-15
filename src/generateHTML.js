@@ -103,6 +103,42 @@ const internTemplate =
     <!-- end intern card -->
     `;
 
+const outputTemplate = 
+    `
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bulma CSS-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <!-- Local CSS -->
+        <link rel="stylesheet" href="./style.css">
+        <title>Software Dev Team</title>
+    </head>
+
+    <body>
+        <section class="hero is-danger">
+            <div class="hero-body">
+                <p class="title has-text-centered">
+                    Software Dev Team
+                </p>
+                <p class="subtitle has-text-centered">
+                    They are cool!
+                </p>
+            </div>
+        </section>
+
+        <div class="columns is-multiline">
+            [OUTPUTREPLACE]
+        </div>
+
+    </body>
+
+    </html>
+    `;
 // for each 
     // check each element role
         // if Manager
@@ -117,8 +153,6 @@ const internTemplate =
 // loop over template array and add each element to the html file
 
 const createElements = (employee) => {
-
-    console.log(JSON.stringify(employee)); // testing - delete
 
     const nameReplace = /\[NAMEREPLACE\]/;
     const idReplace = /\[IDREPLACE\]/;
@@ -168,50 +202,17 @@ const generateHTML = (employees) => {
 
     let elementArray = [];
 
+    let elementString = ``;
+
     for (let i = 0; i < employees.length; i++) {
         elementArray.push(createElements(employees[i]));
     }
     
-    console.log(elementArray);
-    // console.log(`This is from genereate HTML ${JSON.stringify(employees)}`); // testing delete
+    for (let i = 0; i < elementArray.length; i++) {
+        elementString += elementArray[i]
+    }
 
-    return `
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bulma CSS-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <!-- Local CSS -->
-        <link rel="stylesheet" href="./style.css">
-        <title>Software Dev Team</title>
-    </head>
-
-    <body>
-        <section class="hero is-danger">
-            <div class="hero-body">
-                <p class="title has-text-centered">
-                    Software Dev Team
-                </p>
-                <p class="subtitle has-text-centered">
-                    They are cool!
-                </p>
-            </div>
-        </section>
-
-        <div class="columns is-multiline">
-            [OUTPUTREPLACE]
-        </div>
-
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    </body>
-
-    </html>
-    `
+    return outputTemplate.replace(/\[OUTPUTREPLACE\]/, elementString);
 };
 
 module.exports = generateHTML;
