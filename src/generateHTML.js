@@ -208,7 +208,7 @@ const generateHTML = (employees) => {
         elementString += elementArray[i]
     };
 
-    // use a regex expression to replace a string in the outputTemplate string with the generated elementString and return it
+    // uses a regex expression to replace a string in the outputTemplate string with the generated elementString and return it
     return outputTemplate.replace(/\[OUTPUTREPLACE\]/, elementString);
 };
 
