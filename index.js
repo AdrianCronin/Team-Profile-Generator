@@ -142,10 +142,10 @@ const init = () => {
             return askNextAction();
         })
         .then(() => 
-            generateHTML(employees) // pass employee object into generateHTML method
+            generateHTML(employees) // pass employees arry of objects into generateHTML method
         )
         .then((data) =>{
-            writeHTMLFile(data) // accept generated html
+            writeHTMLFile(data) // accepts generated html and writes it to a new file
         });
     // make a catch callback function
 }
