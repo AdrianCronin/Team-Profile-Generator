@@ -151,8 +151,3 @@ const init = () => {
 }
 
 init();
-
-// possible use template html files with stringReplace()
-
-
-
