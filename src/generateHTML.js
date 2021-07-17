@@ -60,8 +60,8 @@ const engineerTemplate =
                         <a class="panel-block">
                             Email: [EMAILREPLACE]
                         </a>
-                        <a class="panel-block">
-                            GitHub: <a href="https://github.com/[GITHUBREPLACE]">[GITHUBREPLACE]</a>
+                        <a class="panel-block" href="https://github.com/[GITHUBREPLACE]">
+                            GitHub: [GITHUBREPLACE]
                         </a>
                     </nav>
                 </div>
