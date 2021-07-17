@@ -151,7 +151,7 @@ const idReplace = /\[IDREPLACE\]/;
 const emailReplace = /\[EMAILREPLACE\]/;
 const roleReplace = /\[ROLEREPLACE\]/;
 const officeNumberReplace = /\[OFFICENUMBERREPLACE\]/;
-const githubReplace = /\[GITHUBREPLACE\]/;
+const githubReplace = /\[GITHUBREPLACE\]/g;
 const schoolReplace = /\[SCHOOLREPLACE\]/;
 
 // accepts an employee object as an argument and depending on which role property it has generates the corresponding html string and returns it
