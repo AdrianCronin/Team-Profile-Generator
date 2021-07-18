@@ -58,6 +58,9 @@ const engineerQuestions = [
         type: 'input',
         message: "What is the engineer's GitHub username?",
         name: 'github',
+        validate: function(github) {
+            return /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(github); // will check if follows github account name constraints
+        },
     }
 ];
 
