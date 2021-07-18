@@ -7,7 +7,7 @@ describe("Manager", () => {
     const officeNumber = 1;
 
     describe("Initialization", () => {
-        it("Should create a new Manager subclass object with name: 'Tiffany' id: '123' email: 'Tiffany@ManagerMail.com' office number: '1' and role: 'Manager' ", () => {
+        it("Should create a new Manager subclass object with property values from the given arguments", () => {
             const manager = new Manager({ name, id, email, officeNumber });
             expect(manager).toEqual({ name: name, id: id, email: email, officeNumber: officeNumber, role: 'Manager' });
         });
@@ -15,7 +15,7 @@ describe("Manager", () => {
 
     // Verify `getName()` function returns the Manager's name
     describe("getName", () => {
-        it("Should return the Manager object's name: 'Tiffany'", () => {
+        it("Should return the Manager object's name property", () => {
             const manager = new Manager({ name, id, email, officeNumber });
             expect(manager.getName()).toEqual(name);
         });
@@ -23,7 +23,7 @@ describe("Manager", () => {
 
     // Verify `getId()` function returns the Manager's id
     describe("getId", () => {
-        it("Should return the Employee object's id: '123'", () => {
+        it("Should return the Employee object's id property", () => {
             const manager = new Manager({ name, id, email, officeNumber });
             expect(manager.getId()).toEqual(id);
         });
@@ -31,7 +31,7 @@ describe("Manager", () => {
 
     // Verify `getEmail()` function returns the Manager's email
     describe("getEmail", () => {
-        it("Should return the Employee object's email: 'Tiffany@ManagerMail.com'", () => {
+        it("Should return the Employee object's email property", () => {
             const manager = new Manager({ name, id, email, officeNumber });
             expect(manager.getEmail()).toEqual(email);
         });
@@ -39,7 +39,7 @@ describe("Manager", () => {
 
     // Verify `getRole()` function returns the Manager's role
     describe("getRole", () => {
-        it("Should return the Employee object's role: 'Manager'", () => {
+        it("Should return the Employee object's role property", () => {
             const employee = new Manager({ name, id, email, officeNumber });
             expect(employee.getRole()).toEqual("Manager");
         });
@@ -47,10 +47,10 @@ describe("Manager", () => {
 
     // Verify `getOfficeNumber()` function returns the Manager's office number
     describe("getOfficeNumber", () => {
-        it("Should return the Manager object's office number: '1'", () => {
+        it("Should return the Manager object's office number property", () => {
             const employee = new Manager({ name, id, email, officeNumber });
             expect(employee.getOfficeNumber()).toEqual(officeNumber);
         });
     });
-    
+
 });
