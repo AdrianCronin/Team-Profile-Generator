@@ -21,6 +21,10 @@ const managerQuestions = [
         type: 'input',
         message: "What is the team managers email?",
         name: 'email',
+        validate: function (email) {
+            // Regex mail check (return true if valid mail)
+            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+        }
     },
     {
         type: 'input',
@@ -45,6 +49,10 @@ const engineerQuestions = [
         type: 'input',
         message: "What is the engineer's email?",
         name: 'email',
+        validate: function (email) {
+            // Regex mail check (return true if valid mail)
+            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+        },
     },
     {
         type: 'input',
@@ -69,6 +77,10 @@ const internQuestions = [
         type: 'input',
         message: "What is the intern's email?",
         name: 'email',
+        validate: function (email) {
+            // Regex mail check (return true if valid mail)
+            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+        },
     },
     {
         type: 'input',
@@ -127,7 +139,7 @@ const askInternQuestions = () => inquirer
         return askNextAction();
     });
 
-    // TODO: probably need to make a css file too
+// TODO: probably need to make a css file too
 // takes the HTML data and creates a new index.html file
 const writeHTMLFile = (data) => {
     fs.writeFile(`./dist/index.html`, data, (err) =>
@@ -146,10 +158,10 @@ const init = () => {
 
             return askNextAction();
         })
-        .then(() => 
+        .then(() =>
             generateHTML(employees) // pass employees[] into generateHTML
         )
-        .then((data) =>{
+        .then((data) => {
             writeHTMLFile(data) // accepts generated html and writes it to a new file
         })
         .catch((error) => {
