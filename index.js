@@ -1,10 +1,11 @@
 const inquirer = require('inquirer'); // inquirer module
 const fs = require('fs'); // file system module
 const generateHTML = require('./src/generateHTML'); // import generated HTML string
-const Manager = require('./lib/manager');
-const Engineer = require('./lib/engineer');
-const Intern = require('./lib/intern');
+const Manager = require('./lib/manager'); // Manager subclass
+const Engineer = require('./lib/engineer'); // Engineer subclass
+const Intern = require('./lib/intern'); // Intern subclass
 
+// Uses these prompts when creating a Manager object
 const managerQuestions = [
     {
         type: 'input',
@@ -28,6 +29,7 @@ const managerQuestions = [
     }
 ];
 
+// Uses these prompts when creating an Engineer object
 const engineerQuestions = [
     {
         type: 'input',
@@ -51,6 +53,7 @@ const engineerQuestions = [
     }
 ];
 
+// Uses these prompts when creating an Intern object
 const internQuestions = [
     {
         type: 'input',
@@ -74,6 +77,7 @@ const internQuestions = [
     }
 ];
 
+// Prompts the User on what to do next
 const nextActionQuestion = [
     {
         type: 'list',
@@ -106,7 +110,7 @@ const askEngineerQuestions = () => inquirer
 
         // build new engineer object with `engineerAnswers`
         const engineer = new Engineer(engineerAnswers);
-        employees.push(engineer); // push engineer object into employees[]
+        employees.push(engineer); // save engineer object into employees[]
 
         return askNextAction();
     });
@@ -115,21 +119,22 @@ const askEngineerQuestions = () => inquirer
 const askInternQuestions = () => inquirer
     .prompt(internQuestions)
     .then((internAnswers) => {
+
         // build new intern object with `internAnswers`
         const intern = new Intern(internAnswers);
-        employees.push(intern); // push intern object to employees[]         
+        employees.push(intern); // save intern object to employees[]         
 
         return askNextAction();
     });
 
+    // TODO: probably need to make a css file too
 // takes the HTML data and creates a new index.html file
-// TODO: probably need to make a css file too
 const writeHTMLFile = (data) => {
     fs.writeFile(`./dist/index.html`, data, (err) =>
         err ? console.log(err) : console.log(`HTML File created successfully!`))
 };
 
-// function initializes app
+// function initializes app, starts by prompting for the team Manager's information
 const init = () => {
     inquirer
         .prompt(managerQuestions)
@@ -137,15 +142,18 @@ const init = () => {
 
             // create new manager object with  `managerAnswers`
             const manager = new Manager(managerAnswers);
-            employees.push(manager); // add manager to employee array
+            employees.push(manager); // save manager object to employees[]
 
             return askNextAction();
         })
         .then(() => 
-            generateHTML(employees) // pass employees arry of objects into generateHTML method
+            generateHTML(employees) // pass employees[] into generateHTML
         )
         .then((data) =>{
             writeHTMLFile(data) // accepts generated html and writes it to a new file
+        })
+        .catch((error) => {
+            console.error(error);
         });
     // make a catch callback function
 }
