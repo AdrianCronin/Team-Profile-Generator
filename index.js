@@ -155,7 +155,6 @@ const init = () => {
         .catch((error) => {
             console.error(error);
         });
-    // make a catch callback function
-}
+};
 
 init();

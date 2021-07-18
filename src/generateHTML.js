@@ -136,10 +136,11 @@ const outputTemplate =
             </div>
         </section>
 
-        <div class="columns is-multiline">
-            [OUTPUTREPLACE]
-        </div>
-
+        <main class="section">
+            <div class="columns is-multiline is-justify-content-center">
+                [OUTPUTREPLACE]
+            </div>
+        </main>
     </body>
 
     </html>
