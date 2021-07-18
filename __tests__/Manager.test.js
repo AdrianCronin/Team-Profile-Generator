@@ -52,4 +52,5 @@ describe("Manager", () => {
             expect(employee.getOfficeNumber()).toEqual(officeNumber);
         });
     });
+    
 });
