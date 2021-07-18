@@ -5,13 +5,13 @@ const managerTemplate =
     <!-- new manager card -->
         <div class="column is-3">
             <div class="card">
-                <header class="card-header has-background-link">
-                    <p class="card-header-title">
+                <header class="card-header has-background-info">
+                    <p class="card-header-title has-text-white">
                         [NAMEREPLACE]
                     </p>
                 </header>
-                <header class="card-header has-background-link">
-                    <p class="card-header-title">
+                <header class="card-header has-background-info">
+                    <p class="card-header-title has-text-white">
                         [ROLEREPLACE]
                     </p>
                 </header>
@@ -41,13 +41,13 @@ const engineerTemplate =
     <!-- new engineer card -->
     <div class="column is-3">
         <div class="card">
-            <header class="card-header has-background-link">
-                <p class="card-header-title">
+            <header class="card-header has-background-info">
+                <p class="card-header-title has-text-white">
                     [NAMEREPLACE]
                 </p>
             </header>
-            <header class="card-header has-background-link">
-                <p class="card-header-title">
+            <header class="card-header has-background-info">
+                <p class="card-header-title has-text-white">
                     [ROLEREPLACE]
                 </p>
             </header>
@@ -60,7 +60,7 @@ const engineerTemplate =
                         <a class="panel-block">
                             Email: [EMAILREPLACE]
                         </a>
-                        <a class="panel-block" href="https://github.com/[GITHUBREPLACE]">
+                        <a class="panel-block" href="https://github.com/[GITHUBREPLACE]" target="_blank">
                             GitHub: [GITHUBREPLACE]
                         </a>
                     </nav>
@@ -77,13 +77,13 @@ const internTemplate =
     <!-- new intern card -->
     <div class="column is-3">
         <div class="card">
-            <header class="card-header has-background-link">
-                <p class="card-header-title">
+            <header class="card-header has-background-info">
+                <p class="card-header-title has-text-white">
                     [NAMEREPLACE]
                 </p>
             </header>
-            <header class="card-header has-background-link">
-                <p class="card-header-title">
+            <header class="card-header has-background-info">
+                <p class="card-header-title has-text-white">
                     [ROLEREPLACE]
                 </p>
             </header>
@@ -129,9 +129,6 @@ const outputTemplate =
             <div class="hero-body">
                 <p class="title has-text-centered">
                     Software Dev Team
-                </p>
-                <p class="subtitle has-text-centered">
-                    They are cool!
                 </p>
             </div>
         </section>
