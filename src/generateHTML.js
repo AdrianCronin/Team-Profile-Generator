@@ -17,12 +17,12 @@ const managerTemplate =
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <nav class="panel">
+                        <nav class="panel is-clipped">
                             <a class="panel-block">
                                 ID: [IDREPLACE]
                             </a>
-                            <a class="panel-block">
-                                Email: [EMAILREPLACE]
+                            <a class="panel-block" href="mailto:[EMAILREPLACE]">
+                                Email:&nbsp<span class="has-text-link">[EMAILREPLACE]</span>
                             </a>
                             <a class="panel-block">
                                 Office Number: [OFFICENUMBERREPLACE]
@@ -53,12 +53,12 @@ const engineerTemplate =
             </header>
             <div class="card-content">
                 <div class="content">
-                    <nav class="panel">
+                    <nav class="panel is-clipped">
                         <a class="panel-block">
                             ID: [IDREPLACE]
                         </a>
-                        <a class="panel-block">
-                            Email: [EMAILREPLACE]
+                        <a class="panel-block" href="mailto:[EMAILREPLACE]">
+                            Email:&nbsp<span class="has-text-link">[EMAILREPLACE]</span>
                         </a>
                         <a class="panel-block" href="https://github.com/[GITHUBREPLACE]" target="_blank">
                             GitHub: &nbsp<span class="has-text-link">[GITHUBREPLACE]</span>
@@ -89,12 +89,12 @@ const internTemplate =
             </header>
             <div class="card-content">
                 <div class="content">
-                    <nav class="panel">
+                    <nav class="panel is-clipped">
                         <a class="panel-block">
                             ID: [IDREPLACE]
                         </a>
-                        <a class="panel-block">
-                            Email: [EMAILREPLACE]
+                        <a class="panel-block" href="mailto:[EMAILREPLACE]">
+                            Email:&nbsp<span class="has-text-link">[EMAILREPLACE]</span>
                         </a>
                         <a class="panel-block">
                             School: [SCHOOLREPLACE]
@@ -108,7 +108,7 @@ const internTemplate =
     `;
 
 // Template HTML code for index.html 
-const outputTemplate = 
+const outputTemplate =
     `
     <!DOCTYPE html>
     <html lang="en">
@@ -144,19 +144,19 @@ const outputTemplate =
     `;
 
 // Regex variables to use with string.replace()
-const nameReplace = /\[NAMEREPLACE\]/;
-const idReplace = /\[IDREPLACE\]/;
-const emailReplace = /\[EMAILREPLACE\]/;
-const roleReplace = /\[ROLEREPLACE\]/;
-const officeNumberReplace = /\[OFFICENUMBERREPLACE\]/;
+const nameReplace = /\[NAMEREPLACE\]/g;
+const idReplace = /\[IDREPLACE\]/g;
+const emailReplace = /\[EMAILREPLACE\]/g;
+const roleReplace = /\[ROLEREPLACE\]/g;
+const officeNumberReplace = /\[OFFICENUMBERREPLACE\]/g;
 const githubReplace = /\[GITHUBREPLACE\]/g;
-const schoolReplace = /\[SCHOOLREPLACE\]/;
+const schoolReplace = /\[SCHOOLREPLACE\]/g;
 
 // accepts an employee object as an argument and depending on which role property it has generates the corresponding html string and returns it
 const createElements = (employee) => {
     let output = ``;
 
-    switch(employee.role) {
+    switch (employee.role) {
         case 'Manager':
             output = managerTemplate;
             output = output.replace(nameReplace, employee.name);
@@ -200,7 +200,7 @@ const generateHTML = (employees) => {
     for (let i = 0; i < employees.length; i++) {
         elementArray.push(createElements(employees[i]));
     };
-    
+
     // takes each generated block and adds it to the elementString
     for (let i = 0; i < elementArray.length; i++) {
         elementString += elementArray[i]
@@ -210,4 +210,4 @@ const generateHTML = (employees) => {
     return outputTemplate.replace(/\[OUTPUTREPLACE\]/, elementString);
 };
 
-module.exports = generateHTML; 
+module.exports = generateHTML;
