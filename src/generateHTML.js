@@ -1,4 +1,3 @@
-// TODO: ADD EMAIL LINKS
 // Template HTML code for Manager object
 const managerTemplate =
     `
@@ -121,14 +120,14 @@ const outputTemplate =
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <!-- Local CSS -->
         <link rel="stylesheet" href="./style.css">
-        <title>Software Dev Team</title>
+        <title>My Team</title>
     </head>
 
     <body>
         <section class="hero is-danger">
             <div class="hero-body">
                 <p class="title has-text-centered">
-                    Software Dev Team
+                    My Team
                 </p>
             </div>
         </section>
