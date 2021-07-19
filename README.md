@@ -1,6 +1,5 @@
 
   # Team-Profile-Generator
-  [Demo Video](https://drive.google.com/file/d/1Epf0DvQ6DzlLIO9vPFmwNIEIC8WjFaNg/view?usp=sharing)
   
   ## Description
   
@@ -29,6 +28,8 @@
   3. Type `npm i` in the terminal
    
   ## Usage
+
+  [Demonstration Video](https://drive.google.com/file/d/1Epf0DvQ6DzlLIO9vPFmwNIEIC8WjFaNg/view?usp=sharing)
 
   Type `node index.js` in the terimnal and follow the prompts
 
