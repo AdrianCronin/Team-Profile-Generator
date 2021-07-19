@@ -142,7 +142,6 @@ const askInternQuestions = () => inquirer
         return askNextAction();
     });
 
-// TODO: probably need to make a css file too
 // takes the HTML data and creates a new index.html file
 const writeHTMLFile = (data) => {
     fs.writeFile(`./dist/index.html`, data, (err) =>
