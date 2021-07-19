@@ -4,7 +4,7 @@
   ## Description
   
 
-  This application is designed to aid a software engineering team create an organized list of their employees. It allows the user to create a simple webpage that lists the employees in an easy to read format. The application lists the employee's name, role, email and id along with additional information depending on the employee's role. 
+  This application is designed to aid a software engineering team in creating an organized list of their employees. It allows the user to create a simple webpage that lists the employees in an easy to read format. The application lists the employee's name, role, email and id along with additional information depending on the employee's role. 
   
 
   
