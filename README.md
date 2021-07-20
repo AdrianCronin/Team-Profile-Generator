@@ -31,7 +31,7 @@
 
   [Demonstration Video](https://drive.google.com/file/d/1Epf0DvQ6DzlLIO9vPFmwNIEIC8WjFaNg/view?usp=sharing)
 
-  Type `node index.js` in the terimnal and follow the prompts
+  Type `node index.js` in the terminal and follow the prompts
 
   Example of generated webpage
 
